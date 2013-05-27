@@ -9,17 +9,12 @@ import (
 	"syscall"
 )
 
-// STARTRECEIVESTRUCT OMIT
-// This will not actually be used, but it will be our reference
-// for what we expect the input data to look like
 type ReceivedData struct {
 	Id       int64  `json:"id"`
 	Name     string `json:"name"`
-	NewGame  bool   `json:"newgame"`
 	Guess    string `json:"guess"`
 	NextChar string `json:"nextchar"`
 }
-// ENDRECEIVESTRUCT OMIT
 
 func sigintCatcher() {
 	ch := make(chan os.Signal)

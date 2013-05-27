@@ -1,2 +1,2 @@
-This branch contains the code for the first section, including markup
-for the present tool.
+This branch contains the code for the first section, without markup, and
+including the solution to the exercise.
