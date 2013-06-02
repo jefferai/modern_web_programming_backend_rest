@@ -43,7 +43,7 @@ func (*Wordgame) GetNewgame(ctx *jas.Context) {
 
 	if err != nil {
 		ctx.Error = jas.NewInternalError("Got an error generating a game ID")
-		panic(nil)
+		panic(ctx.Error)
 	}
 	// ENDIEDEF OMIT
 
@@ -54,7 +54,7 @@ func (*Wordgame) GetNewgame(ctx *jas.Context) {
 	name, err := ctx.FindString("name")
 	if err != nil {
 		ctx.Error = jas.NewRequestError("Player's name must be provided")
-		panic(nil)
+		panic(ctx.Error)
 	}
 	// ENDREDEF OMIT
 
