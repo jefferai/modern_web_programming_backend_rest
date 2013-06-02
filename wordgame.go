@@ -48,13 +48,13 @@ func (*Wordgame) GetNewgame(ctx *jas.Context) {
 
 	if err != nil {
 		ctx.Error = jas.NewInternalError("Got an error generating a game ID")
-		panic(nil)
+		panic(ctx.Error)
 	}
 
 	name, err := ctx.FindString("name")
 	if err != nil {
 		ctx.Error = jas.NewRequestError("Player's name must be provided")
-		panic(nil)
+		panic(ctx.Error)
 	}
 
 	currgame := randint.Int64()
@@ -112,11 +112,11 @@ func (*Wordgame) PostGuess(ctx *jas.Context) {
 	var ok bool
 	if game, ok = games[id]; !ok {
 		ctx.Error = jas.NewRequestError("Given game ID not found")
-		panic(nil)
+		panic(ctx.Error)
 	}
 	if len(nextchar) != 1 {
 		ctx.Error = jas.NewRequestError("Next character is not a single character")
-		panic(nil)
+		panic(ctx.Error)
 	}
 
 	// Increment the number of guesses
